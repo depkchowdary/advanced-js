@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<head>
+    <title> Draw - Version 2.0</title>
+    <style>
+        #myCanvas {
+            background: #da817e;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to bottom, #1565C0, #b92b27);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to bottom, #1565C0, #b92b27);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="640" height="480">
+        Canvas is not supported on your browser
+    </canvas>
+<script>
+    _YSK = {
+        /* use of ES6 default parameters  */
+        draw: function (left = 10, top = 10, height = 100, width = 100, stroke = 'black', fill = 'silver') {
+            var canvas = document.getElementById('myCanvas')
+            if (canvas.getContext) {
+                var ctx = canvas.getContext('2d')
+                ctx.strokeStyle = stroke
+                ctx.fillStyle = fill
+                ctx.fillRect(left, top, height, width)
+                ctx.strokeRect(left, top, height, width)
+            }
+        }
+    }
+    /* Using stubs is great, however it quickly turns complex to maintain a stub for every version of legacy code.
+    Using default parameters. */
+    _YSK.draw(); /* makes a square at top left  */
+
+    _YSK.draw(420, undefined, 200, 200, 'yellow', 'mistyrose')/* A bigger square at the top right */
+
+    _YSK.draw(undefined, 370, undefined, undefined, undefined, undefined)
+</script>
+</body>
+</html>

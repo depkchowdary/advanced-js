@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<head>
+    <title> Draw - Version 3.0</title>
+    <style>
+        #myCanvas {
+            background: #da817e;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to bottom, #1565C0, #b92b27);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to bottom, #1565C0, #b92b27);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="640" height="480">
+        Canvas is not supported on your browser
+    </canvas>
+    <script>
+        _YSK = {
+            /* use of ES6 default parameters  */
+            draw: function (...arguments) {
+                if(arguments[0] === undefined){
+                    let options = {}
+                }
+                var canvas = document.getElementById('myCanvas')
+                if (canvas.getContext) {
+                    if(typeof arguments[0] !== undefined){
+                        if(typeof arguments[0] === 'object'){
+                            options = arguments[0]
+                        }else{
+                            options = {
+                                left : arguments[0],
+                                top: arguments[1],
+                                height: arguments[2],
+                                width: arguments[3],
+                                stroke: arguments[4],
+                                fill: arguments[5]
+                            }
+                        }
+                    }
+                    var ctx = canvas.getContext('2d')
+                    ctx.strokeStyle = options.stroke || this.defaultDrawOptions.stroke
+                    ctx.fillStyle = options.fill || this.defaultDrawOptions.fill
+                    ctx.fillRect(options.left|| this.defaultDrawOptions.left, options.top|| this.defaultDrawOptions.top, options.height|| this.defaultDrawOptions.height, options.width|| this.defaultDrawOptions.width)
+                    ctx.strokeRect(options.left || this.defaultDrawOptions.left, options.top || this.defaultDrawOptions.top, options.height || this.defaultDrawOptions.height, options.width || this.defaultDrawOptions.width)
+                }
+            },
+            defaultDrawOptions: {
+                left: 10,
+                top: 10,
+                width: 100,
+                height: 100,
+                stroke: 'mistyrose',
+                fill: 'lemonchiffon'
+            }
+        }
+        /* legacy code */
+        _YSK.draw(300, 300)
+        _YSK.draw(120, 120, 40, 20, 'mistyrose', 'green')
+        _YSK.draw(10, 10, 100, 100)
+        _YSK.draw(250, 170, 100, 100)
+        _YSK.draw()
+
+
+        _YSK.draw({
+            left: 200,
+            top: 100,
+            width: 30,
+            height: 15,
+            stroke: 'mistyrose',
+            fill: 'yellow'
+        }) 
+
+
+        _YSK.draw({
+            stroke: 'blue',
+            fill : 'green'
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+    <head>
+        <title> Draw - Version 1.0</title>
+        <style>
+            #myCanvas{
+                background: #b92b27;  /* fallback for old browsers */
+                background: -webkit-linear-gradient(to bottom, #1565C0, #b92b27);  /* Chrome 10-25, Safari 5.1-6 */
+                background: linear-gradient(to bottom, #1565C0, #b92b27); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="myCanvas" width="640" height="480">
+            Canvas is not supported on your browser
+        </canvas>
+    </body>
+    <script>
+        _YSK = {
+            /* A stu function which calls latest draw version */
+            _v1_draw(left, top, height, width){
+                this.draw(left, top, height, width, 'black', 'silver')
+            },
+            draw: function(left,top, height, width , stroke, fill){
+                var canvas = document.getElementById('myCanvas')
+                if(canvas.getContext){
+                    var ctx = canvas.getContext('2d')
+                    ctx.strokeStyle = stroke
+                    ctx.fillStyle = fill
+                    ctx.fillRect(left,top,height,width)
+                    ctx.strokeRect(left,top,height,width)
+                }
+            }
+        }
+        //legacy code
+        _YSK.draw();
+        _YSK.draw(300, 300)
+        _YSK.draw(120, 120, 400, 200)
+        //new code
+        _YSK.draw(120, 120, 400, 200, 'mistyrose', 'green')
+
+        //fixing legacy code with stubs
+        _YSK._v1_draw(10,10,100,100)
+        _YSK._v1_draw(530, 370, 100, 100)
+        /* With every iteration the new code broke the legacy code due to which the squares are not drawn to canvas */
+        /* Our objective here is to get the legacy code working */
+    </script>
+</html>
