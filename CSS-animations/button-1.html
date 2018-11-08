@@ -245,6 +245,35 @@
         #seven:hover::before{
             border-width: 0 40px 40px 0;
         }
+
+        #eight{
+            position: relative;
+            transition-duration: 0.4s;
+            transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1);
+        }
+        #eight::after{
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            background-color: red;
+            left:  50%;
+            top: 50%;
+            border-radius: 100%;
+            transition-duration: 0.4s;
+            transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1);
+            z-index: -1;
+        }
+
+        #eight:hover::after{
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top:0;
+        }
+        #eight:hover{
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -255,6 +284,8 @@
     <button id="five"><span id="five-span"></span>Hover</button>
     <button id="six"><span id="six-span"></span>Hover</button>
     <button id="seven"><span id="seven-text">Hover</span></button>
-    
+    <br>
+    <button id="eight">Hover</button>
+
 </body>
 </html>
